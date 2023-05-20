@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import "bootstrap/dist/css/bootstrap.css"
 
 const ColorPalette = () => {
     // Declare a state variable called 'colors' and its setter function 'setColors'
@@ -28,25 +29,33 @@ const ColorPalette = () => {
     };
 
     return (
-        <div>
-            <h2>Color Palette</h2>
-            <input
-                type="color"
-                value={newColor}
-                onChange={(e) => setNewColor(e.target.value)}
-                placeholder="Enter a color"
-            />
-            <button onClick={addColor}>Add Color</button>
-            <p>Total Colors: {colors.length}</p>
-            <div className="color-container">
+        <div className="container mt-5">
+            <h2 className="mb-4">Color Palette</h2>
+            <div className="row align-items-center">
+                <div className="col-auto">
+                    <input
+                        type="color"
+                        value={newColor}
+                        onChange={(e) => setNewColor(e.target.value)}
+                    />
+                </div>
+                <div className="col-auto">
+                    <button className="btn btn-primary" onClick={addColor}>
+                        Add Color
+                    </button>
+                </div>
+                <div className="col">
+                    <p className="mb-0">Total Colors: {colors.length}</p>
+                </div>
+            </div>
+            <div className="row mt-3">
                 {colors.map((color, index) => (
                     <div
                         key={index}
-                        className="color"
+                        className="col-2 mb-3"
                         style={{
                             backgroundColor: color,
-                            border: "1px solid black",
-                            height: "100px",
+                            height: '80px',
                         }}
                         onClick={() => removeColor(index)}
                     ></div>
