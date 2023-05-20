@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 
 const ColorPalette = () => {
     // Declare a state variable called 'colors' and its setter function 'setColors'
@@ -6,6 +6,11 @@ const ColorPalette = () => {
 
     // Declare a state variable called 'newColor' and its setter function 'setNewColor'
     const [newColor, setNewColor] = useState("");
+
+    useEffect(() => {
+        // Update document title when the colors array changes
+        document.title = `Color Palette (${colors.length})`;
+    }, [colors]);
 
     // Function to handle adding a new color to the palette
     const addColor = () => {
